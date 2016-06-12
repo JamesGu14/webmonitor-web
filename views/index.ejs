@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+      var ts;
+      var te;
+      
+      function createxmlHttpRequest(cb) {
+        var xmlHttp;  
+        if (window.ActiveXObject) { 
+          xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+          cb(xmlHttp); 
+        } else if (window.XMLHttpRequest) { 
+          xmlHttp=new XMLHttpRequest();
+
+          cb(xmlHttp); 
+        } 
+      }
+
+      window.onload = function pageLoaded() {
+        // 注意在传参数值的时候最好使用encodeURI处理一下，以防出现乱码
+        var url = 'http://localhost:8000/100'; 
+        createxmlHttpRequest(function(xmlHttp) {
+          
+          xmlHttp.open("GET",url);
+          xmlHttp.send(null); 
+        }); 
+        
+        ts = new Date();
+      };
+
+      window.onbeforeunload = function doGet(){ 
+        // 注意在传参数值的时候最好使用encodeURI处理一下，以防出现乱码
+        console.log('hello')
+        
+        var url = 'http://localhost:8000/200'; 
+        createxmlHttpRequest(function(xmlHttp) {
+          
+          xmlHttp.open("GET",url);
+          xmlHttp.send(null); 
+        });
+
+      }; 
+        
+      
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    
+  </body>
+</html>
