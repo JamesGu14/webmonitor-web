@@ -25,7 +25,12 @@
         <span class="nav-text">我的网站</span>
       </a>
       <ul class="nav-sub">
-        <li ui-sref-active="active">
+        <% for(var i=0; i<apps.length; i++) { %>
+          <li ui-sref-active="active">
+            <a href="/monitor/<%= apps[i]._id %>"><span class="nav-text"><%= apps[i].app_name %></span></a>
+          </li>
+        <% } %>
+        <!-- <li ui-sref-active="active">
           <a href="inbox.html" ui-sref="app.inbox.list"><span class="nav-text">Inbox</span></a>
         </li>
         <li ui-sref-active="active">
@@ -33,18 +38,12 @@
         </li>
         <li ui-sref-active="active">
           <a href="calendar.html" ui-sref="app.calendar"><span class="nav-text">Calendar</span></a>
-        </li>
-        <li ui-sref-active="active" class="hide" ng-class="{'show': 1}">
-          <a ui-sref="app.note.list"><span class="nav-text">Note</span></a>
-        </li>
-        <li ui-sref-active="active" class="hide" ng-class="{'show': 1}">
-          <a ui-sref="app.todo"><span class="nav-text">Todo</span></a>
-        </li>
+        </li> -->
       </ul>
     </li>
 
     <li>
-      <a href="create.html" ui-sref="app.create">
+      <a href="/create" ui-sref="app.create">
         <span class="nav-icon">
           <i class="material-icons">&#xe8d2;<span ui-include="'../assets/images/i_3.svg'"></span></i>
         </span>
