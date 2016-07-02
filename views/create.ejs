@@ -1,0 +1,94 @@
+<% include ./_shared/header %>
+
+<div class="app" id="app">
+  <!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <div id="aside" class="app-aside modal fade nav-dropdown" ng-class="{'folded': app.setting.folded}">
+    <!-- fluid app aside -->
+    <div class="left navside dark dk" layout="column">
+      <div class="navbar no-radius">
+        <div ui-include="'../views/blocks/navbar.brand.html'"></div>
+      </div>
+      <div flex class="hide-scroll">
+        <nav class="scroll nav-light">
+          <% include ./_shared/nav %>
+        </nav>
+      </div>
+      <div flex-no-shrink class="b-t">
+        <div ui-include="'../views/blocks/aside.top.0.html'"></div>
+      </div>
+    </div>
+  </div>
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z0" role="main">
+    <div class="app-header white box-shadow">
+      <div ui-include="'../views/blocks/header.html'"></div>
+    </div>
+    <div class="app-footer" ng-class="{'hide': $state.current.data.hideFooter}">
+      <div ui-include="'../views/blocks/footer.html'"></div>
+    </div>
+    <div ui-view class="app-body" id="view">
+
+      <!-- ############ PAGE START-->
+      <div class="padding">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <form ui-jp="parsley" method="POST" action="/create">
+              <div class="box">
+                <div class="box-header">
+                  <h2>申请监测新网站</h2>
+                  <small class="text-muted">只需1分钟，你就可以获得关于你网站有价值的实时信息</small>
+                </div>
+                <div class="box-body">                    
+                  <div class="form-group row">
+                    <label class="col-sm-4 form-control-label">管理员邮箱</label>
+                    <div class="col-sm-8">
+                      <input type="email" value="<%=user.username %>" class="form-control" disabled>    
+                    </div>
+                  </div>
+                  
+                  <div class="form-group row">
+                    <label class="col-sm-4 form-control-label">网站名 （7字以内）</label>
+                    <div class="col-sm-8">
+                      <input type="text" name="app_name" class="form-control" placeholder="网站管家网" maxlength="7">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group row">
+                    <label class="col-sm-4 form-control-label">根域名</label>
+                    <div class="col-sm-8">
+                      <input type="url" name="app_url" class="form-control" placeholder="wangzhanguanjia.com">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group row">
+                    <div class="col-sm-12">
+                      <p class="text-muted">请确认您有网站管理权，若申请后3日内我们没有正确检测到我们的脚本文件，该API Key将被作废。</p>  
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="dker p-a text-right">
+                  <button type="submit" class="btn info">提交申请</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+
+  <!-- ############ LAYOUT END-->
+
+</div>
+
+<% include ./_shared/footer %>

@@ -1,0 +1,270 @@
+<% include ./_shared/header %>
+
+<div class="app" id="app">
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <div id="aside" class="app-aside modal fade sm nav-dropdown">
+    <div class="left navside grey dk" layout="column">
+      <div class="navbar no-radius">
+        <div ui-include="'../views/blocks/navbar.brand.html'"></div>
+      </div>
+      <div flex class="hide-scroll">
+        <nav class="scroll nav-border b-primary">
+          <% include ./_shared/nav %>
+          <!-- <div ui-include="'../views/blocks/nav.html'"></div> -->
+        </nav>
+      </div>
+      <div flex-no-shrink>
+        <div ui-include="'../views/blocks/aside.bottom.0.html'"></div>
+      </div>
+    </div>
+  </div>
+  <!-- / aside -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z2 box-radius-1x" role="main">
+    <div class="app-header white box-shadow">
+        <div ui-include="'../views/blocks/header.html'"></div>
+    </div>
+    <div class="app-footer">
+      <div ui-include="'../views/blocks/footer.html'"></div>
+    </div>
+    <div ui-view class="app-body" id="view">
+
+<!-- ############ PAGE START-->
+<div class="row-col b-b">
+	<div class="col-md">
+		<div class="padding">
+			<div class="margin">
+				<h5 class="m-b-0 _300"><%=curr_app.app_name%></h5>
+			</div>
+			<div class="row-col box">
+				<div class="col-sm-4">
+					<div class="box-header">
+						<h3>实时在线用户</h3>
+						<small>实时在线用户</small>
+					</div>
+					<div class="box-body">
+						<p style="font-size: 80px; text-align: center" id="currUser" >0</p>
+						<a class="btn btn-sm rounded success" onclick="getCurrUser()" id="btnGetCurrUser">点我刷新</a>
+					</div>
+		        </div>
+		        <div class="col-sm-8 grey lt">
+	        		<div class="box-header">
+			          <h3 style="display: inline-block">访问流量走势&nbsp;&nbsp;</h3>
+								<select style="color: black;">
+									<option value="day">今天</option>
+									<option value="threeday">过去三天</option>
+									<option value="week">本周</option>
+									<option value="month">本月</option>
+								</select>
+								<small>修改时间区间可以刷新趋势图</small>
+			        </div>
+			        <div class="box-body">
+			            <div id="chartContainer">
+								</div>
+			        </div>
+		        </div>
+		    </div>
+			
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="box">
+						<div class="box-header">
+							<h3>Messages</h3>
+						</div>
+						<ul class="list-group no-border m-b">
+					        <li class="list-group-item">
+					          <a href="" class="pull-left w-40 m-r"><img src="../assets/images/a8.jpg" class="img-responsive img-circle"></a>
+					          <div class="clear">
+					            <a href="" class="_500 block">Jonathan Doe</a>
+					            <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+					          </div>
+					        </li>
+					        <li class="list-group-item">
+					          <a href="" class="pull-left w-40 m-r"><img src="../assets/images/a2.jpg" class="img-responsive img-circle"></a>
+					          <div class="clear">
+					            <a href="" class="_500 block">Jack Michale</a>
+					            <span class="text-muted">Sectetur adipiscing elit</span>
+					          </div>
+					        </li>
+					        <li class="list-group-item">
+					          <a href="" class="pull-left w-40 m-r"><img src="../assets/images/a3.jpg" class="img-responsive img-circle"></a>
+					          <div class="clear">
+					            <a href="" class="_500 block">Jessi</a>
+					            <span class="text-muted">Sectetur adipiscing elit</span>
+					          </div>
+					        </li>
+					        <li class="list-group-item">
+					          <a href="" class="pull-left w-40 m-r"><img src="../assets/images/a4.jpg" class="img-responsive img-circle"></a>
+					          <div class="clear">
+					            <a href="" class="_500 block">Sodake</a>
+					            <span class="text-muted">Vestibulum ullamcorper sodales nisi nec condimentum</span>
+					          </div>
+					        </li>
+					    </ul>
+				    </div>
+				</div>
+				<div class="col-sm-6">
+			        <div class="box">
+			            <div class="box-header b-b">
+			              <h3>Latest Tweets</h3>
+			            </div>
+			            <ul class="list">
+			              <li class="list-item">
+			                <div class="list-body">
+			                  <p>Wellcome <a href class="text-info">@Drew Wllon</a> and play this web application template, have fun1 </p>
+			                  <small class="block text-muted"><i class="fa fa-fw fa-clock-o"></i> 2 minuts ago</small>
+			                </div>
+			              </li>
+			              <li class="list-item">
+			                <div class="list-body">
+			                  <p>Morbi nec <a href class="text-info">@Jonathan George</a> nunc condimentum ipsum dolor sit amet, consectetur</p>
+			                  <small class="block text-muted"><i class="fa fa-fw fa-clock-o"></i> 1 hour ago</small>
+			                </div>
+			              </li>
+			              <li class="list-item">
+			                <div class="list-body">                   
+			                  <p><a href class="text-info">@Josh Long</a> Vestibulum ullamcorper sodales nisi nec adipiscing elit. Morbi id neque quam</p>
+			                  <small class="block text-muted"><i class="fa fa-fw fa-clock-o"></i> 2 hours ago</small>
+			                </div>
+			              </li>
+			            </ul>
+			        </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade inactive" id="chat" data-backdrop="false">
+  <div class="right w-xxl grey lt b-l">
+  	<div ui-include="'../views/blocks/modal.chat.html'"></div>
+  </div>
+</div>
+
+<!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / content -->
+
+
+<!-- ############ LAYOUT END-->
+
+</div>
+
+<script src="../scripts/fusioncharts.js"></script>
+<script src="../scripts/fusioncharts.charts.js"></script>
+<script src="../scripts/fusioncharts.theme.carbon.js"></script>
+
+<script>
+$(document).ready(function() {
+	getCurrUser();
+	
+	// Render line chart
+	renderChart();
+	
+});
+
+function getCurrUser() {
+	$('#btnGetCurrUser').prop("disabled", true);
+	$.get('/api/visit/curr?appid=<%=curr_app._id %>', function(data) {
+		if(data) {
+			$('#currUser').text(data.count);
+		}
+		$('#btnGetCurrUser').prop("disabled", false);
+	});
+}
+
+function renderChart() {
+	FusionCharts.ready(function(){
+      var revenueChart = new FusionCharts({
+        "type": "line",
+        "renderAt": "chartContainer",
+        "width": "100%",
+        "height": "300",
+        "dataFormat": "json",
+        "dataSource": {
+					"chart": {
+							"caption": "区间用户访问量图标",
+							"subCaption": "本周数据",
+							"xAxisName": "时间区间",
+							"yAxisName": "访问量",
+							"lineThickness": "4",
+							"paletteColors": "#0075c2",
+							"baseFontColor": "#333333",
+							"baseFont": "Helvetica Neue,Arial",
+							"captionFontSize": "18",
+							"subcaptionFontSize": "18",
+							"subcaptionFontBold": "0",
+							"showBorder": "0",
+							"bgColor": "#ffffff",
+							"showShadow": "0",
+							"canvasBgColor": "#ffffff",
+							"canvasBorderAlpha": "0",
+							"divlineAlpha": "100",
+							"divlineColor": "#999999",
+							"divlineThickness": "1",
+							"divLineDashed": "1",
+							"divLineDashLen": "1",
+							"divLineGapLen": "1",
+							"showXAxisLine": "1",
+							"xAxisLineThickness": "1",
+							"xAxisLineColor": "#999999",
+							"showAlternateHGridColor": "0"
+					},
+					"data": [
+							{
+									"label": "周一",
+									"value": "15123"
+							},
+							{
+									"label": "周二",
+									"value": "14233"
+							},
+							{
+									"label": "周三",
+									"value": "23507"
+							},
+							{
+									"label": "周四",
+									"value": "9110"
+							},
+							{
+									"label": "周五",
+									"value": "15529"
+							},
+							{
+									"label": "周六",
+									"value": "20803"
+							},
+							{
+									"label": "周日",
+									"value": "19202"
+							}
+					],
+					"trendlines": [
+							{
+									"line": [
+											{
+													"startvalue": "18500",
+													"color": "#1aaf5d",
+													"displayvalue": "平均值",
+													"valueOnRight": "1",
+													"thickness": "2"
+											}
+									]
+							}
+					]
+			}
+    });
+
+    revenueChart.render();
+	});
+}
+
+</script>
+
+<% include ./_shared/footer %>

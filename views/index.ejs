@@ -4,6 +4,7 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    
     <script>
       var ts;
       var te;
@@ -20,30 +21,30 @@
         } 
       }
 
-      window.onload = function pageLoaded() {
-        // 注意在传参数值的时候最好使用encodeURI处理一下，以防出现乱码
-        var url = 'http://localhost:8000/100'; 
-        createxmlHttpRequest(function(xmlHttp) {
+      // window.onload = function pageLoaded() {
+      //   // 注意在传参数值的时候最好使用encodeURI处理一下，以防出现乱码
+      //   var url = 'http://localhost:8000/100'; 
+      //   createxmlHttpRequest(function(xmlHttp) {
           
-          xmlHttp.open("GET",url);
-          xmlHttp.send(null); 
-        }); 
+      //     xmlHttp.open("GET",url);
+      //     xmlHttp.send(null); 
+      //   }); 
         
-        ts = new Date();
-      };
+      //   ts = new Date();
+      // };
 
-      window.onbeforeunload = function doGet(){ 
-        // 注意在传参数值的时候最好使用encodeURI处理一下，以防出现乱码
-        console.log('hello')
+      // window.onbeforeunload = function doGet(){ 
+      //   // 注意在传参数值的时候最好使用encodeURI处理一下，以防出现乱码
+      //   console.log('hello')
         
-        var url = 'http://localhost:8000/200'; 
-        createxmlHttpRequest(function(xmlHttp) {
+      //   var url = 'http://localhost:8000/200'; 
+      //   createxmlHttpRequest(function(xmlHttp) {
           
-          xmlHttp.open("GET",url);
-          xmlHttp.send(null); 
-        });
+      //     xmlHttp.open("GET",url);
+      //     xmlHttp.send(null); 
+      //   });
 
-      }; 
+      // }; 
         
       
     </script>
