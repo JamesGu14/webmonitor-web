@@ -1,3 +1,5 @@
+'use strict';
+
 var mongoose = require('../code/mongoose');
 
 /**
@@ -5,8 +7,8 @@ var mongoose = require('../code/mongoose');
  * registered accounts or OAuth accounts
  */
 var sys_userSchema = mongoose.Schema({
-    username: String,
-    password: String,
+    username: {type: String, required: true },
+    password: {type: String, required: true },
     source: String,
     reg_time: Date,
     user_rating: {
@@ -31,9 +33,9 @@ module.exports.save_sys_user = function(sys_user) {
  */
 var user_appSchema = mongoose.Schema({
     userid: mongoose.Schema.Types.ObjectId,
-    app_name: String,
-    app_url: String,
-    api_key: String,
+    app_name: {type: String, required: true },
+    app_url: {type: String, required: true },
+    api_key: {type: String, required: true },
     start_time: Date,
     end_time: Date,
     is_canceled: {
@@ -59,12 +61,13 @@ module.exports.user_app = mongoose.model('user_app', user_appSchema);
 var app_visitSchema = mongoose.Schema({
   appid: mongoose.Schema.Types.ObjectId,
   rand_uuid: String,
-  url: String,
+  url: {type: String, required: true },
+  user_ip: {type: String, required: true },
   device: String,
   broswer: String,
-  action: String,
+  action: {type: String, required: true },
   time: Date,
-  api_key: String
+  api_key: {type: String, required: true }
 });
 
 module.exports.app_visit = mongoose.model('app_visit', app_visitSchema);

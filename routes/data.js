@@ -10,6 +10,7 @@ var common = require('../code/common');
 var mongoose = require('../code/mongoose');
 
 router.get('/test', function(req, res, next) {
+    console.log('=====' + req.headers['user-agent']);
     res.render('index', {
         title: 'Express'
     });
@@ -67,21 +68,22 @@ router.get('/create_visit', function(req, res, next) {
   var _visit = new app_visit({
     appid: mongoose.Types.ObjectId("575e40fb48ecb35278f4d34a"),
     rand_uuid: 'f22aa065-f8d0-4cdd-aa30-6f394ba725e2',
-    url: 'http://i.xiebazi.com/home/index.html',
-    device: 'req.body.device',
-    broswer: req.body.browser,
-    action: req.body.action,
+    user_ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+    url: req.protocol + '://' + req.get('Host') + req.url,
+    device: req.headers['user-agent'],
+    broswer: '',
+    action: 'open',
     time: _now,
-    api_key: req.body.api_key 
+    api_key: '23d6bb71f4c85597cc2a33b6491f276543db2e7d9b17f3056965dd9ffcb78f00' 
   });
-  
+    
   _visit.save(function(err, _visit) {
     if(err) return console.log(err);
     console.log('Saved successfully');
   })
   
   res.render('index', {
-      title: 'Save app_visit'
+    title: 'Save app_visit'
   });
 });
 

@@ -8,8 +8,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var data_route = require('./routes/data'); // database script
+var visit_route = require('./routes/api/visit');
 
 var passport = require('./code/passport');
 var session = require('express-session');
@@ -43,8 +43,8 @@ app.use(session({
 app.use(passport.initialize());
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/data', data_route);
+app.use('/api/visit', visit_route);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
