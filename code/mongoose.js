@@ -1,10 +1,13 @@
+'use strict';
+
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/webmonitor');
+const Config = require('../configuration/'); 
+mongoose.connect(Config.get('/database/mongo/url'));
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('Connected');
+  console.log('MongoDB Connected at: ' + Config.get('/database/mongo/url'));
 });
 
 module.exports = mongoose;
