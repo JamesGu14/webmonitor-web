@@ -1,10 +1,10 @@
-<% include ./_shared/header %>
+<% include ../_shared/header %>
 
 <div class="app" id="app">
   <!-- ############ LAYOUT START-->
 
   <!-- aside -->
-  <div id="aside" class="app-aside modal fade nav-dropdown" ng-class="{'folded': app.setting.folded}">
+  <div id="aside" class="app-aside modal fade nav-dropdown">
     <!-- fluid app aside -->
     <div class="left navside dark dk" layout="column">
       <div class="navbar no-radius">
@@ -12,7 +12,7 @@
       </div>
       <div flex class="hide-scroll">
         <nav class="scroll nav-light">
-          <% include ./_shared/nav %>
+          <% include ../_shared/nav %>
         </nav>
       </div>
       <div flex-no-shrink class="b-t">
@@ -27,7 +27,7 @@
     <div class="app-header white box-shadow">
       <div ui-include="'../views/blocks/header.html'"></div>
     </div>
-    <div class="app-footer" ng-class="{'hide': $state.current.data.hideFooter}">
+    <div class="app-footer">
       <div ui-include="'../views/blocks/footer.html'"></div>
     </div>
     <div ui-view class="app-body" id="view">
@@ -36,7 +36,7 @@
       <div class="padding">
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
-            <form ui-jp="parsley" method="POST" action="/create">
+            <form ui-jp="parsley" method="POST" action="/dashboard/create">
               <div class="box">
                 <div class="box-header">
                   <h2>申请监测新网站</h2>
@@ -91,4 +91,4 @@
 
 </div>
 
-<% include ./_shared/footer %>
+<% include ../_shared/footer %>

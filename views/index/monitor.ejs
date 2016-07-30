@@ -1,6 +1,6 @@
-<% include ./_shared/header %>
+<% include ../_shared/header %>
 
-<div class="app" id="app">
+<div>
 <!-- ############ LAYOUT START-->
 
   <!-- aside -->
@@ -11,7 +11,7 @@
       </div>
       <div flex class="hide-scroll">
         <nav class="scroll nav-border b-primary">
-          <% include ./_shared/nav %>
+          <% include ../_shared/nav %>
           <!-- <div ui-include="'../views/blocks/nav.html'"></div> -->
         </nav>
       </div>
@@ -160,13 +160,6 @@
 <script src="../scripts/fusioncharts.theme.carbon.js"></script>
 
 <script>
-$(document).ready(function() {
-	getCurrUser();
-	
-	// Render line chart
-	renderChart();
-	
-});
 
 function getCurrUser() {
 	$('#btnGetCurrUser').prop("disabled", true);
@@ -265,6 +258,13 @@ function renderChart() {
 	});
 }
 
+$(document).ready(function() {
+
+	getCurrUser();
+
+	// Render line chart
+	renderChart();
+});
 </script>
 
-<% include ./_shared/footer %>
+<% include ../_shared/footer %>

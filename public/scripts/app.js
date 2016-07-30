@@ -2,7 +2,7 @@
 	'use strict';
 
 	  window.app = {
-      name: 'Flatkit',
+      name: '网站管家',
       version: '1.1.0',
       // for chart colors
       color: {

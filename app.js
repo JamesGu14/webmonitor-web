@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var data_route = require('./routes/data'); // database script
 var visit_route = require('./routes/api/visit');
+var dashboard_route = require('./routes/dashboard');
 
 var passport = require('./code/passport');
 var session = require('express-session');
@@ -45,6 +46,7 @@ app.use(passport.initialize());
 app.use('/', routes);
 app.use('/data', data_route);
 app.use('/api/visit', visit_route);
+app.use('/dashboard', dashboard_route);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

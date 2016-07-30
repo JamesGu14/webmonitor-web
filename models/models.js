@@ -71,3 +71,16 @@ var app_visitSchema = mongoose.Schema({
 });
 
 module.exports.app_visit = mongoose.model('app_visit', app_visitSchema);
+
+/**
+ * contact model, user contact us form submits to here
+ */
+var contactSchema = mongoose.Schema({
+    username: {type: String, required: true },
+    reason: String,
+    mobile: String,
+    content: {type: String, required: true },
+    submit_at: Date
+});
+
+module.exports.contact = mongoose.model('contact', contactSchema);

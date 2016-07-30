@@ -19,8 +19,6 @@ router.get('/curr', function(req, res, next) {
   var _app_id = req.query.appid; 
   app_visit.find({ 'appid' : _app_id }, 'action', function(err, data) {
     
-    console.log('CurrUser API is called');
-    
     if(err) {
       console.log('database connection issue');
       res.json({ count : 0 });

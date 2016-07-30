@@ -36,11 +36,13 @@ const config = {
     $filter: 'env',
     $default: {
       mongo: {
-        url: 'mongodb://localhost/webmonitor',
-        
+        url: 'mongodb://localhost/webmonitor'
       }
     },
     dev: {
+      mongo: {
+        url: 'mongodb://localhost/webmonitor'
+      }
     },
     stage: {
     },
